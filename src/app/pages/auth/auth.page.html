@@ -1,0 +1,19 @@
+<ion-content>
+  <body>
+    <div class="container">
+      <form class="form">
+        <div class="btn">
+          <button type="button" class="signUpBtn" (click)="showSignUp()">REGISTER</button>
+          <button type="button" class="login" (click)="showLogin()">LOG IN</button>
+        </div>
+        <!-- Mostrar componentes según estado -->
+        @if (!isRegisterActive) {
+        <app-register/>
+        }
+        @else {
+        <app-sign-up/>
+        }
+      </form>
+    </div>
+  </body>
+</ion-content>

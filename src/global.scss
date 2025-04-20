@@ -9,6 +9,9 @@
  * https://ionicframework.com/docs/layout/global-stylesheets
  */
 
+ /* Variables estilos */
+
+
 /* Core CSS required for Ionic components to work properly */
 @import "@ionic/angular/css/core.css";
 
@@ -34,4 +37,126 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+/* @import '@ionic/angular/css/palettes/dark.system.css'; */
+//COMENTAMOS LA LÍNEA ANTERIOR Y PONEMOS ESTE BACKGROUND PARA HACER EL TEMA CLARO
+:root {
+  color-scheme: light;
+  --ion-background-color: #ffffff;
+  --ion-text-color: #222428;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url('./assets/images/fondo2.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+.form{
+  width: 350px;
+  height: 450px;
+  background-color: rgba(255,255,255,0.2);
+  box-shadow: 0 5px 30px black ;
+}
+
+.btn button{
+  padding: 3px;
+  margin: 30px 0px 40px 30px;
+  border-style: none;
+  background-color: transparent;
+  color: white;
+  font-size: 18px;
+  font-weight: 550;
+  border-bottom: 2px solid transparent;
+}
+
+/* Cuando el botón esté activo */
+.btn button.active {
+  color: rgb(252, 111, 46); /* Naranja */
+  border-bottom: 2px solid rgb(252, 111, 46); /* Línea naranja abajo */
+}
+
+
+.formGroup{
+  display: flex;
+  justify-content: center;
+}
+
+.formGroup input{
+  border: none;
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: transparent;
+  border-bottom: 2px solid white;
+  font-size: 15;
+}
+
+::placeholder{
+  color: rgba(255,255,255,0.4);
+}
+
+input:focus{
+  outline: none;
+  border-bottom: 2px solid rgb(252, 111, 46);
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.checkBox{
+  display: flex;
+  justify-content: center;
+  margin: 15px;
+}
+
+#checkbox{
+  height: 15px;
+  width: 15px;
+  margin-right: 10px;
+}
+
+.text{
+  color: whitesmoke;
+  font-size: 13px;
+}
+
+.btn2{
+  padding: 10px;
+  outline: none;
+  width: 150px;
+  border-radius: 20px;
+  border-style: none;
+  background-color: rgb(252, 111, 46);
+  color: whitesmoke;
+  font-weight: 400;
+}
+
+.btn2:hover{
+  background-color: rgb(252, 111, 46, 0.6);
+}
+
+.btn button:hover{
+  border-bottom: 2px solid rgb(252, 111, 46);
+  color: rgb(252, 111, 46);
+}
+
+.login{
+  margin-top: 40px;
+}
+
+.login .checkBox{
+  margin-top: 40px;
+}

@@ -1,2 +1,69 @@
-// For information on how to create your own theme, please see:
-// http://ionicframework.com/docs/theming/
+// src/theme/variables.scss
+
+// Colores principales
+:root {
+  --ion-color-primary: #4a90e2; // Azul suave
+  --ion-color-primary-rgb: 74, 144, 226;
+  --ion-color-secondary: #50e3c2; // Verde agua
+  --ion-color-secondary-rgb: 80, 227, 194;
+  --ion-color-tertiary: #f5a623; // Naranja pastel
+  --ion-color-tertiary-rgb: 245, 166, 35;
+  --ion-color-success: #2dd36f;
+  --ion-color-warning: #ffc409;
+  --ion-color-danger: #eb445a;
+  --ion-color-light: #f4f5f8; // Fondo claro
+  --ion-color-medium: #92949c;
+  --ion-color-dark: #222428;
+
+  // Fondos
+  --background: #ffffff;
+  --background-login: #f9f9f9;
+
+  // Texto
+  --ion-text-color: #222428;
+  --ion-text-color-step-600: #666666;
+}
+
+// Estilos personalizados para login
+.login-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--background-login);
+  height: 100vh;
+  padding: 20px;
+
+  ion-card {
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    background: #ffffff;
+
+    ion-card-title {
+      font-size: 24px;
+      color: var(--ion-color-primary);
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    ion-item {
+      --background: transparent;
+      --border-radius: 12px;
+      margin-bottom: 1rem;
+    }
+
+    ion-input {
+      color: var(--ion-text-color);
+    }
+
+    ion-button {
+      margin-top: 1rem;
+      width: 100%;
+      --border-radius: 12px;
+      --background: var(--ion-color-primary);
+    }
+  }
+}
