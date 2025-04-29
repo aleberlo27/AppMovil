@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { IonContent } from '@ionic/angular/standalone';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { RegisterComponent } from "./register/register.page";
-import { SignUpPage } from "./sign-up/sign-up.page";
+import { RegisterComponent } from "./pages/register/register.page";
+import { SignUpPage } from "./pages/sign-up/sign-up.page";
 
 @Component({
   selector: 'app-auth',
@@ -25,7 +25,7 @@ export class AuthPage implements OnInit {
   ngOnInit() {
   }
 
-  isRegisterActive = true; // true = mostrar Register, false = mostrar Sign Up
+  isRegisterActive = true; // true = mostrar Register, false = mostrar login
 
   showSignUp() {
     this.isRegisterActive = false;

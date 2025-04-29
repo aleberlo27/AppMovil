@@ -1,21 +1,17 @@
 import { Routes } from '@angular/router';
+import { SignUpPage } from './pages/auth/pages/sign-up/sign-up.page';
+import { AuthPage } from './pages/auth/auth.page';
+import { ForgotPasswordPage } from './pages/auth/pages/forgot-password/forgot-password.page';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'auth',
-    pathMatch: 'full',
+    loadChildren: () => import('./pages/auth/auth.routes')
   },
   {
-    path: 'auth',
-    loadComponent: () => import('./pages/auth/auth.page').then( m => m.AuthPage)
-  },
-  {
-    path: 'sign-up',
-    loadComponent: () => import('./pages/auth/sign-up/sign-up.page').then( m => m.SignUpPage)
-  },
-  {
-    path: 'forgot-password',
-    loadComponent: () => import('./pages/auth/forgot-password/forgot-password.page').then( m => m.ForgotPasswordPage)
-  },
+    path: 'initial',
+    loadChildren: () => import('./pages/application/pages.routes')
+  }
 ];
+
+export default routes;

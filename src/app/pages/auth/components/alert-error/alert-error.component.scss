@@ -1,0 +1,30 @@
+.custom-alert {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  background-color: #fdecea;
+  border-left: 4px solid #f47236;
+  color: #e45d28;
+  font-weight: bold;
+  animation: fadeInUp 0.4s ease-out;
+  border-radius: 4px;
+  margin-top: 12px;
+}
+
+.custom-alert .icon {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  margin-right: 8px;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

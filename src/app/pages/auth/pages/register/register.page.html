@@ -1,0 +1,30 @@
+<form class="signUp" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div class="formGroup">
+    <input type="text" formControlName="firstName" name="name" placeholder="First name" />
+  </div>
+  <div class="formGroup">
+    <input type="text" formControlName="lastName" name="surname" placeholder="Last name"/>
+  </div>
+  <div class="formGroup">
+    <input type="email" formControlName="email" name="email" placeholder="Email"/>
+  </div>
+  <div class="formGroup">
+    <input type="password" formControlName="password" name="password" placeholder="Password" />
+  </div>
+  <div class="formGroup">
+    <input type="password" name="confirmPassword" placeholder="Confirm password"/>
+  </div>
+  <div class="formGroup">
+    <input type="text" formControlName="companyCode" name="companyCode" placeholder="Company code"/>
+  </div>
+
+  <div class="formGroup">
+    <button type="submit" class="btn2">REGISTER</button>
+  </div>
+
+
+  @if (hasError()) {
+    <alert-error message="ERROR" />
+  }
+
+</form>
