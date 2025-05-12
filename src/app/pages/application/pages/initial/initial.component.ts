@@ -2,7 +2,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-initial',
+  standalone: true,
   imports: [],
-  templateUrl: './initial.page.html'
+  templateUrl: './initial.component.html'
 })
 export class InitialComponent { }

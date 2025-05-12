@@ -162,3 +162,19 @@ input:focus{
 .login .checkBox{
   margin-top: 40px;
 }
+
+.alert-success {
+  display: flex;
+  align-items: center;
+  background-color: #d1e7dd;
+  border: 1px solid #badbcc;
+  color: #0f5132;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+.alert-success .icon {
+  margin-right: 10px;
+}

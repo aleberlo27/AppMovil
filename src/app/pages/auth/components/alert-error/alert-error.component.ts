@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 @Component({
-  selector: 'alert-error',
+  selector: 'app-alert-error',
   imports: [],
   templateUrl: './alert-error.component.html',
   styleUrl:  './alert-error.component.scss'
 })
 export class AlertErrorComponent {
-  message = input('');
+  message = input<string>('');
 }

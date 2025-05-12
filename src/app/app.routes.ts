@@ -1,7 +1,5 @@
 import { Routes } from '@angular/router';
-import { SignUpPage } from './pages/auth/pages/sign-up/sign-up.page';
-import { AuthPage } from './pages/auth/auth.page';
-import { ForgotPasswordPage } from './pages/auth/pages/forgot-password/forgot-password.page';
+import { InitialComponent } from './pages/application/pages/initial/initial.component';
 
 export const routes: Routes = [
   {
@@ -10,7 +8,7 @@ export const routes: Routes = [
   },
   {
     path: 'initial',
-    loadChildren: () => import('./pages/application/pages.routes')
+    component: InitialComponent
   }
 ];
 

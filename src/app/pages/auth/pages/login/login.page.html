@@ -1,0 +1,24 @@
+<ion-content class="ion-padding login-content">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-box">
+    <h2>Iniciar sesión</h2>
+
+    <ion-item>
+      <ion-label position="floating">Correo electrónico</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+
+    <div *ngIf="hasError()" class="error-message">
+      Credenciales inválidas o campos vacíos.
+    </div>
+
+    <ion-button expand="block" type="submit" [disabled]="isPosting()">Entrar</ion-button>
+
+    <app-alert-success *ngIf="exito()" message="Inicio de sesión exitoso. Redirigiendo..."></app-alert-success>
+    <app-alert-error *ngIf="hasError()" message="Error en el inicio de sesión. Intenta de nuevo."></app-alert-error>
+  </form>
+</ion-content>

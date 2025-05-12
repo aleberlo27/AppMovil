@@ -1,14 +1,11 @@
 import { Routes } from '@angular/router';
-import { InitialComponent } from './pages/initial/initial.page';
+import { InitialComponent } from './pages/initial/initial.component';
 
 export const pagesRoutes: Routes = [
   {
-    path: '',
-    component: InitialComponent,
-    children: [
-
-    ]
-  },
+    path: 'initial',
+    component: InitialComponent
+  }
 
 ];
 

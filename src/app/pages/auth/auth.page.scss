@@ -1,0 +1,15 @@
+.btn {
+  display: flex;
+  gap: 8px; /* Espacio pequeño entre los botones */
+  justify-content: center; /* Centra los botones horizontalmente */
+  width: 100%; /* Los botones ocupan todo el ancho */
+  margin-top: 16px; /* Espacio arriba */
+}
+
+/* Aseguramos que los botones sean más pequeños y estén alineados */
+ion-button {
+  width: auto; /* Hace que los botones tengan el tamaño adecuado */
+  height: auto; /* Ajusta la altura según el tamaño del texto */
+  font-size: 12px; /* Tamaño de fuente más pequeño */
+  padding: 6px 12px; /* Espaciado interno más pequeño */
+}

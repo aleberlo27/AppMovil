@@ -1,15 +1,33 @@
 <ion-content>
-  <body>
-    <div class="container">
-      <div class="form">
-        <div class="btn">
-          <button type="button" class="signUpBtn" (click)="showSignUp()">REGISTER</button>
-          <button type="button" class="login" (click)="showLogin()">LOG IN</button>
-        </div>
-        <!-- Mostrar componentes según estado -->
-        <app-register *ngIf="!isRegisterActive"/>
-        <app-sign-up *ngIf="isRegisterActive"/>
+  <div class="container">
+    <div class="form">
+      <!-- Botones de navegación entre registro e inicio de sesión -->
+      <div class="btn">
+        <ion-button
+          expand="block"
+          fill="solid"
+          class="signUpBtn"
+          (click)="showSignUp()"
+          [routerLink]="['/register']"
+          routerLinkActive="active">
+          REGISTER
+        </ion-button>
+
+        <ion-button
+          expand="block"
+          fill="solid"
+          color="primary"
+          class="login"
+          (click)="showLogin()"
+          [routerLink]="['/login']"
+          routerLinkActive="active">
+          LOG IN
+        </ion-button>
       </div>
+
+      <!-- Mostrar componentes según el estado -->
+      <app-register *ngIf="showRegisterForm"></app-register>
+      <app-login *ngIf="!showRegisterForm"></app-login>
     </div>
-  </body>
+  </div>
 </ion-content>

@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { AuthPage } from './auth.page';
-import { SignUpPage } from './pages/sign-up/sign-up.page';
+import { LoginPage } from './pages/login/login.page';
 import { RegisterComponent } from './pages/register/register.page';
 
 export const authRoutes: Routes = [
@@ -10,16 +10,12 @@ export const authRoutes: Routes = [
     children: [
       {
         path: 'login',
-        component: SignUpPage
+        component: LoginPage
       },
       {
         path: 'register',
         //loadComponent: () => import('./pages/auth/pages/register/register.page').then( m => m.RegisterPage)
         component: RegisterComponent
-      },
-      {
-        path: '**',
-        redirectTo: ''
       }
     ]
   },
