@@ -2,11 +2,11 @@
   <div class="container">
     <div class="form">
       <!-- Botones de navegación entre registro e inicio de sesión -->
-      <div class="btn">
+      <div class="btn-group">
         <ion-button
           expand="block"
           fill="solid"
-          class="signUpBtn"
+          class="nav-btn"
           (click)="showSignUp()"
           [routerLink]="['/register']"
           routerLinkActive="active">
@@ -16,8 +16,7 @@
         <ion-button
           expand="block"
           fill="solid"
-          color="primary"
-          class="login"
+          class="nav-btn"
           (click)="showLogin()"
           [routerLink]="['/login']"
           routerLinkActive="active">

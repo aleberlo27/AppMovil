@@ -3,18 +3,22 @@
   justify-content: center;
   align-items: center;
   height: 100%;
+  width: 100%;
   background: #f4f5f8;
+  padding: 16px; /* espacio lateral para pantallas pequeñas */
+  box-sizing: border-box;
 }
 
+/* Caja del formulario */
 .register-box {
   width: 100%;
-  max-width: 320px;
+  max-width: 400px; /* puedes ajustar esto si quieres que sea más ancho */
   padding: 20px;
   border-radius: 12px;
   background: #ffffff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 }
-
 ion-item {
   --inner-padding-end: 10px;
 }

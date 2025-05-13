@@ -1,7 +1,10 @@
 {
   "name": "login",
+  "type": "angular-standalone",
   "integrations": {
     "capacitor": {}
   },
-  "type": "angular-standalone"
+  "serve": {
+    "port": 4200
+  }
 }

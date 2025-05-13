@@ -50,14 +50,31 @@
   padding: 0;
   box-sizing: border-box;
 }
-
-body{
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-image: url('./assets/images/fondo2.jpg');
-  background-size: cover;
-  background-attachment: fixed;
+body[color-theme="light"] {
+  background-color: #ffffff;
+  color: #222428;
 }
 
+body[color-theme="dark"] {
+  background-color: #121212;
+  color: #f4f4f4;
+  transition: background-color 300ms ease, color 300ms ease;
+}
+/* Estilos para el modo oscuro */
+body.dark {
+  --background: #121212;  /* Fondo oscuro */
+  --color: #ffffff;       /* Texto blanco */
+  --ion-background-color: #121212;
+  --ion-text-color: #ffffff;
+}
+
+/* Estilos para el modo claro (por defecto) */
+body {
+  --background: #f4f5f8;   /* Fondo claro */
+  --color: #333;           /* Texto oscuro */
+  --ion-background-color: #f4f5f8;
+  --ion-text-color: #333;
+}
 .container{
   display: flex;
   justify-content: center;

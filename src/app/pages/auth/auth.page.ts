@@ -10,7 +10,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.page.html',
-  styleUrls: ['./auth.page.scss'],
+  styleUrls: ['./auth.page.css'],
   standalone: true,
   imports: [IonButton, IonContent, CommonModule, FormsModule, RegisterComponent, LoginPage, RouterLink, RouterLinkActive]
 })

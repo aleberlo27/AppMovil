@@ -1,1 +1,20 @@
-<h1> initial page </h1>
+<ion-content fullscreen>
+  <div class="home-content">
+    <!-- Tarjeta de perfil -->
+    <ion-card class="profile-card">
+      <ion-card-header>
+        <ion-card-title>Bienvenido, {{ user?.name }}</ion-card-title>
+        <ion-card-subtitle>{{ user?.email }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <p><strong>ID de trabajador:</strong> {{ user?.id }}</p>
+        <p><strong>Rol:</strong> {{ user?.role }}</p>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Botón para iniciar turno -->
+    <ion-button expand="block" class="custom-blue" (click)="startShift()">
+      Iniciar turno
+    </ion-button>
+  </div>
+</ion-content>
