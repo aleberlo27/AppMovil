@@ -17,8 +17,5 @@
     </div>
 
     <ion-button expand="block" type="submit" [disabled]="isPosting()">Entrar</ion-button>
-
-    <app-alert-success *ngIf="exito()" message="Inicio de sesión exitoso. Redirigiendo..."></app-alert-success>
-    <app-alert-error *ngIf="hasError()" message="Error en el inicio de sesión. Intenta de nuevo."></app-alert-error>
   </form>
 </ion-content>

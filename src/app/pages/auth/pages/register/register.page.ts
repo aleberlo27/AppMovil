@@ -21,6 +21,9 @@ export class RegisterComponent {
   formUtils = FormUtils;
   router = inject(Router);
 
+  registerFailed = signal(false);
+  companyCodeNotExist = signal(false);
+  passwordMismatch = signal(false);
   hasError = signal(false);
   isPosting = signal(false);
 
@@ -46,20 +49,18 @@ export class RegisterComponent {
 
     // Verificar coincidencia de contraseñas
     if (formValue.password !== formValue.confirmPassword) {
-      console.log("Las contraseñas no coinciden");
+      this.passwordMismatch.set(true);
+      setTimeout(() => this.passwordMismatch.set(false), 2000);
       return;
     }
 
     this.authService.checkCompanyCode(formValue.companyCode ?? '').subscribe(exists => {
-      console.log("Resultado de checkCompanyCode:", exists);
       if (!exists) {
-        console.log("El código de empresa no es válido"); // Reemplazable por un mensaje visual
+        this.companyCodeNotExist.set(true);
+        setTimeout(() => this.companyCodeNotExist.set(false), 2000);
         return;
       }
 
-      console.log("Código válido, procediendo al registro...");
-
-      // Si existe, proceder con el registro
       this.authService.register(
         formValue.firstName ?? '',
         formValue.lastName ?? '',
@@ -68,12 +69,17 @@ export class RegisterComponent {
         formValue.companyCode ?? ''
       ).subscribe(success => {
         if (success) {
-          console.log("Registro exitoso");
-          this.router.navigateByUrl('/auth/login'); // Redirigir al login tras el registro
+          this.router.navigateByUrl('/login');
+          this.resetForm();
         } else {
-          console.log("Fallo en el registro");
+          this.registerFailed.set(true);
+          setTimeout(() => this.registerFailed.set(false), 2000);
+          return;
         }
       });
     });
+  }
+  resetForm() {
+    this.registerForm.reset();
   }
 }

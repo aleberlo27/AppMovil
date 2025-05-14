@@ -11,7 +11,7 @@
 .custom-container {
   position: absolute;
   top: 30%;
-  left: 5%;
+  left: 15%;
   background-color: #ffdebc;
   border-radius: 50px;
   box-shadow: 0 20px 10px rgba(228, 82, 82, 0.1);
@@ -84,4 +84,43 @@
     max-width: 90%; /* En pantallas pequeñas, ocupa el 90% del ancho */
     padding: 15px;
   }
+}
+
+
+.estado-turno {
+  padding: 6px 12px;
+  border-radius: 999px; /* para hacerlo totalmente redondeado */
+  font-weight: bold;
+  text-align: center;
+  display: inline-block;
+  min-width: 100px;
+  margin-top: 10px;
+}
+
+.estado-turno.on {
+  background-color: #d1f5d3; /* verde suave */
+  color: #2e7d32; /* verde oscuro */
+  border: 1px solid #2e7d32;
+}
+
+.estado-turno.off {
+  background-color: #fddede; /* rojo suave */
+  color: #c62828; /* rojo oscuro */
+  border: 1px solid #c62828;
+}
+
+.logout-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: transparent;
+  padding: 10px;
+}
+
+.logout-button {
+  margin: 0 auto;
+  width: 90%;
+  font-weight: bold;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }

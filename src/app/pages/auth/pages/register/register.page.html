@@ -38,6 +38,15 @@
 
     <ion-button expand="block" type="submit" [disabled]="isPosting()">Registrar</ion-button>
 
-    <app-alert-error *ngIf="hasError()" message="Error en el registro. Por favor, verifica los datos."></app-alert-error>
+    <div *ngIf="passwordMismatch()" class="error-message">
+      Las contraseñas no coinciden.
+    </div>
+
+    <div *ngIf="companyCodeNotExist()" class="error-message">
+      El código de empresa no existe.
+    </div>
+
+    <app-alert-error *ngIf="hasError()"
+      message="Error en el registro. Por favor, verifica los datos."></app-alert-error>
   </form>
 </ion-content>

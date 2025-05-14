@@ -3,26 +3,40 @@
     <!-- Tarjeta de perfil -->
     <ion-card class="custom-card">
       <ion-card-header class="custom-card-header">
-        <ion-card-title class="custom-card-title">NOMBRE:</ion-card-title>
-        <ion-card-subtitle class="custom-card-subtitle">CODE:</ion-card-subtitle>
+        <ion-card-title class="custom-card-title">{{ worker?.firstName }} {{ worker?.lastName }}</ion-card-title>
+        <ion-card-subtitle class="custom-card-subtitle">{{ worker?.companyCode }}</ion-card-subtitle>
+        <ion-card-subtitle class="custom-card-subtitle">{{ worker?.email }}</ion-card-subtitle>
       </ion-card-header>
 
       <ion-card-content class="custom-card-content">
-        AQUI IRÁ SI ESTÁ EN TURNO O NO
+        @if (isOnShift()) {
+        <div class="estado-turno on">EN TURNO</div>
+        }@else {
+        <div class="estado-turno off">FUERA DE TURNO</div>
+        }
       </ion-card-content>
     </ion-card>
 
     <ion-button class="custom-button" (click)="startShift()">Iniciar turno</ion-button>
 
-    <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false" class="custom-popover">
+    <ion-popover #popover class="custom-popover">
       <ng-template>
-        <ion-content class="ion-padding">Hello World!</ion-content>
+        <ion-content class="ion-padding">¡Turno iniciado correctamente!</ion-content>
       </ng-template>
     </ion-popover>
   </div>
 </ion-content>
 
-      <!-- <ion-item>
+<ion-footer class="logout-footer">
+  <ion-toolbar>
+    <ion-button expand="block" color="danger" (click)="logout()" class="logout-button">
+      <ion-icon slot="start" name="log-out-outline"></ion-icon>
+      Cerrar sesión
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
+
+<!-- <ion-item>
         <ion-toggle (ngModel)="paletteToggle" (ionChange)="toggleChange($event)" justify="space-between">Dark
           Mode</ion-toggle>
       </ion-item> -->
