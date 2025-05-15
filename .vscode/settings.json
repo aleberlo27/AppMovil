@@ -7,5 +7,6 @@
     "angular-*": {
       "skipStyle": true
     }
-  }
+  },
+  "java.configuration.updateBuildConfiguration": "interactive"
 }
