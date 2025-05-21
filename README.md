@@ -55,6 +55,10 @@ Con Ionic + Angular puedes desarrollar una sola base de código que funcione en 
     ionic capacitor run android
    ```
 
+    ## 🧑‍💻 Desarrollado por
+Alejandra Bernal López
+Para sugerencias, mejoras o errores, ¡no dudes en contactarnos o abrir un issue!
+
 ##  📌 Notas adicionales
 Esta app es una base ideal para integraciones más complejas como inicio de sesión con Google, Firebase, geolocalización, entre otras.
 
