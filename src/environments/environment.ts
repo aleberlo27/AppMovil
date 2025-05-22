@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://10.0.2.2:1313/api',
+  baseUrl: 'https://back-xaow.onrender.com/api',
 };
 
 /*
