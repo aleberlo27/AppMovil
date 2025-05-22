@@ -1,5 +1,17 @@
 import { Component, signal } from '@angular/core';
-import { IonContent, IonCardHeader, IonCardSubtitle, IonFooter, IonCardTitle, IonCardContent, IonCard, IonButton, IonToolbar, IonPopover, IonIcon } from '@ionic/angular/standalone';
+import {
+  IonContent,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonFooter,
+  IonCardTitle,
+  IonCardContent,
+  IonCard,
+  IonButton,
+  IonToolbar,
+  IonPopover,
+  IonIcon,
+} from '@ionic/angular/standalone';
 import { FormsModule } from '@angular/forms';
 import { WorkerResponse } from 'src/app/pages/auth/models/auth.interface';
 import { AuthService } from 'src/app/pages/auth/services/auth.service';
@@ -9,21 +21,39 @@ import { AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-initial',
   standalone: true,
-  imports: [IonIcon, IonPopover, IonPopover, IonIcon, IonFooter, IonCardSubtitle, IonToolbar, IonCardHeader, IonContent, IonCardTitle, IonCardContent, IonCard, IonButton, FormsModule],
+  imports: [
+    IonIcon,
+    IonPopover,
+    IonPopover,
+    IonIcon,
+    IonFooter,
+    IonCardSubtitle,
+    IonToolbar,
+    IonCardHeader,
+    IonContent,
+    IonCardTitle,
+    IonCardContent,
+    IonCard,
+    IonButton,
+    FormsModule,
+  ],
   templateUrl: './initial.component.html',
   styleUrl: './initial.component.css',
 })
 export class InitialComponent {
-  worker: WorkerResponse | null = null; // Asegúrate de que el tipo sea correcto
+  worker: WorkerResponse | null = null;
   errorMessage: string = '';
-  isOnShift = signal(false); // Para saber si está en turno o no
+  isOnShift = signal(false);
 
-  constructor(private authService: AuthService, private router: Router, private alertController: AlertController) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private alertController: AlertController
+  ) {}
 
   ngOnInit() {
-    // Nos suscribimos al observable worker$ para obtener los datos
-    this.authService.worker$.subscribe(worker => {
-      this.worker = worker; // Almacenamos el trabajador si existe
+    this.authService.worker$.subscribe((worker) => {
+      this.worker = worker;
       this.checkIfOnShift();
     });
   }
@@ -38,25 +68,29 @@ export class InitialComponent {
       return;
     }
 
-    //Obtener la hora actual
     const currentDate = new Date();
     const start = this.formatTime(currentDate);
 
-    //Sumar 8 horas a la hora de inicio para obtener la hora de fin
     const endDate = new Date(currentDate);
     endDate.setHours(currentDate.getHours() + 8); //Sumar 8 horas
     const end = this.formatTime(endDate);
 
-    // Datos para el turno
-    const shiftData = { date: currentDate.toISOString().split('T')[0], start, end };
+    //Datos para el turno
+    const shiftData = {
+      date: currentDate.toISOString().split('T')[0],
+      start,
+      end,
+    };
 
-    //Llamada al servicio para iniciar el turno
-    this.authService.startShift(this.worker._id, shiftData).subscribe(response => {
-      console.log('Turno iniciado correctamente', response);
-      this.isOnShift.set(true);
-    }, error => {
-      console.error('Error al iniciar el turno:', error);
-    });
+    this.authService.startShift(this.worker._id, shiftData).subscribe(
+      (response) => {
+        console.log('Turno iniciado correctamente', response);
+        this.isOnShift.set(true);
+      },
+      (error) => {
+        console.error('Error al iniciar el turno:', error);
+      }
+    );
   }
 
   //Función para formatear la hora en formato HH:mm
@@ -66,9 +100,13 @@ export class InitialComponent {
     return `${hours}:${minutes}`;
   }
 
-  // Función para verificar si el trabajador está en turno
+  //Función para verificar si el trabajador está en turno
   checkIfOnShift() {
-    if (!this.worker || !this.worker.schedules || this.worker.schedules.length === 0) {
+    if (
+      !this.worker ||
+      !this.worker.schedules ||
+      this.worker.schedules.length === 0
+    ) {
       this.isOnShift.set(false);
       return;
     }
@@ -87,8 +125,11 @@ export class InitialComponent {
       const isOvernight = endMinutes < startMinutes;
 
       if (
-        (!isOvernight && currentMinutes >= startMinutes && currentMinutes <= endMinutes) ||
-        (isOvernight && (currentMinutes >= startMinutes || currentMinutes <= endMinutes))
+        (!isOvernight &&
+          currentMinutes >= startMinutes &&
+          currentMinutes <= endMinutes) ||
+        (isOvernight &&
+          (currentMinutes >= startMinutes || currentMinutes <= endMinutes))
       ) {
         this.isOnShift.set(true);
         return;
@@ -106,7 +147,9 @@ export class InitialComponent {
     const endMinutes = this.timeToMinutes(end);
 
     //Comprobamos si la hora actual está entre la hora de inicio y la de fin
-    return currentTimeMinutes >= startMinutes && currentTimeMinutes <= endMinutes;
+    return (
+      currentTimeMinutes >= startMinutes && currentTimeMinutes <= endMinutes
+    );
   }
 
   //Función auxiliar para convertir la hora en formato HH:mm a minutos desde medianoche
@@ -130,4 +173,3 @@ export class InitialComponent {
     this.router.navigate(['/login']);
   }
 }
-

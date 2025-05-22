@@ -12,10 +12,10 @@
       <ion-input type="password" formControlName="password"></ion-input>
     </ion-item>
 
-    <div *ngIf="hasError()" class="error-message">
-      Credenciales inválidas o campos vacíos.
-    </div>
-
     <ion-button expand="block" type="submit" [disabled]="isPosting()">Entrar</ion-button>
+    <app-alert-error
+      *ngIf="hasError()"
+      message="Error en el login. Por favor, verifica los datos.">
+    </app-alert-error>
   </form>
 </ion-content>

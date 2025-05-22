@@ -32,19 +32,13 @@
       <ion-input type="text" formControlName="companyCode"></ion-input>
     </ion-item>
 
-    <div *ngIf="hasError()" class="error-message">
-      Las contraseñas no coinciden o hay campos vacíos.
-    </div>
-
     <ion-button expand="block" type="submit" [disabled]="isPosting()">Registrar</ion-button>
 
-    <div *ngIf="passwordMismatch()" class="error-message">
-      Las contraseñas no coinciden.
-    </div>
+    <app-alert-error *ngIf="passwordMismatch()"
+      message="Las contraseñas no coinciden."></app-alert-error>
 
-    <div *ngIf="companyCodeNotExist()" class="error-message">
-      El código de empresa no existe.
-    </div>
+    <app-alert-error *ngIf="companyCodeNotExist()"
+          message="El código de empresa no existe."></app-alert-error>
 
     <app-alert-error *ngIf="hasError()"
       message="Error en el registro. Por favor, verifica los datos."></app-alert-error>

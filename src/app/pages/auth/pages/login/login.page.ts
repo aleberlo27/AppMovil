@@ -1,17 +1,39 @@
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { FormUtils } from '../../utils/form.utils';
-import { IonButton, IonContent, IonItem, IonLabel, IonInput } from "@ionic/angular/standalone";
+import {
+  IonButton,
+  IonContent,
+  IonItem,
+  IonLabel,
+  IonInput,
+} from '@ionic/angular/standalone';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { AlertErrorComponent } from '../../components/alert-error/alert-error.component';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrl: './login.page.css',
   standalone: true,
-  imports: [IonContent, IonItem, IonLabel, IonButton, IonInput, CommonModule, FormsModule, ReactiveFormsModule]
+  imports: [
+    IonContent,
+    IonItem,
+    IonLabel,
+    IonButton,
+    IonInput,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AlertErrorComponent,
+  ],
 })
 export class LoginPage {
   fb = inject(FormBuilder);
@@ -23,15 +45,18 @@ export class LoginPage {
   isPosting = signal(false);
 
   loginForm = this.fb.group({
-    email: ['', [Validators.required, Validators.pattern(FormUtils.emailPattern)]],
-    password: ['', [Validators.required, Validators.minLength(6)]]
+    email: [
+      '',
+      [Validators.required, Validators.pattern(FormUtils.emailPattern)],
+    ],
+    password: ['', [Validators.required, Validators.minLength(6)]],
   });
 
   onSubmit() {
     if (this.loginForm.invalid) {
       this.hasError.set(true);
       setTimeout(() => {
-        this.hasError.set(false)
+        this.hasError.set(false);
       }, 2000);
       return;
     }
@@ -44,7 +69,8 @@ export class LoginPage {
         this.router.navigateByUrl('/initial');
         this.resetForm();
       } else {
-        console.warn('No autenticado');
+        this.hasError.set(true);
+        setTimeout(() => this.hasError.set(false), 3000);
       }
     });
   }
