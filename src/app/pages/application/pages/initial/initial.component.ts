@@ -17,6 +17,7 @@ import { WorkerResponse } from 'src/app/pages/auth/models/auth.interface';
 import { AuthService } from 'src/app/pages/auth/services/auth.service';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { EmailService } from '../../services/email.service';
 
 @Component({
   selector: 'app-initial',
@@ -48,7 +49,8 @@ export class InitialComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private emailService: EmailService
   ) {}
 
   ngOnInit() {
@@ -86,6 +88,15 @@ export class InitialComponent {
       (response) => {
         console.log('Turno iniciado correctamente', response);
         this.isOnShift.set(true);
+
+        this.emailService.sendTurnoEmail(this.worker!._id).subscribe({
+          next: async (res) => {
+            await this.presentEmailSentAlert();
+          },
+          error: async (err) => {
+            await this.presentEmailErrorAlert();
+          },
+        });
       },
       (error) => {
         console.error('Error al iniciar el turno:', error);
@@ -162,6 +173,26 @@ export class InitialComponent {
     const alert = await this.alertController.create({
       header: 'Turno activo',
       message: 'Ya estás actualmente en turno. No puedes iniciar otro.',
+      buttons: ['OK'],
+    });
+
+    await alert.present();
+  }
+
+  async presentEmailSentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Correo enviado',
+      message: 'El correo se ha enviado correctamente al trabajador.',
+      buttons: ['OK'],
+    });
+
+    await alert.present();
+  }
+
+  async presentEmailErrorAlert() {
+    const alert = await this.alertController.create({
+      header: 'Error al enviar correo',
+      message: 'No se pudo enviar el correo.',
       buttons: ['OK'],
     });
 
